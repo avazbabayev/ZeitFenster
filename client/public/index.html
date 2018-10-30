@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="./stylesheets/style.css" rel="stylesheet">
+
+    <link href="easycal/easycal.css" rel="stylesheet" type="text/css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link href="./stylesheets/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script type="text/javascript" src="./javascripts/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <!--<script type="text/javascript" src="../javascripts/bootstrap.min.js" charset="UTF-8"></script>-->
+
+    <script type="text/javascript" src="javascripts/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="javascripts/bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script type="text/javascript" src="easycal/easycal.js"></script>
+
+
+    <title>ZeitFensterBuchungPortal</title>
+  </head>
+  <body>
+
+<div style="display: none">
+  <div id = "mycal"></div>
+</div>
+    <div id="app"></div>
+
+
+
+
+  <script>
+
+      $('#mycal').easycal({
+          startDate: '17-10-2018', // OR 31/10/2104
+          timeFormat: 'HH:mm',
+          columnDateFormat: 'dddd, DD MMM',
+          minTime: '08:00:00',
+          maxTime: '16:00:00',
+          slotDuration: 60,
+          timeGranularity: 15,
+
+          dayClick: function (el, startTime) {
+              if(!el.attr('clickable')){
+                  $('#green').css('background', 'white')
+                  $("#green").removeAttr("id");
+                  console.log('Slot selected: ' + startTime);
+                  var data_date = el.closest('td').attr('data-datefor');
+                  $('#date_selected').val(data_date +" " + startTime)
+                  el.css('background', 'green')
+                  el.attr('id', 'green');
+              }
+          },
+          eventClick: function (eventId) {
+              console.log('Event was clicked with id: ' + eventId);
+          },
+
+
+          overlapColor: '#FF0',
+          overlapTextColor: '#000',
+          overlapTitle: 'Multiple'
+      });
+  </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <script src="javascripts/calendar.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+  </body>
+</html>
